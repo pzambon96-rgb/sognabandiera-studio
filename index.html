@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sognabandiera Studio</title>
+<meta name="description" content="Progettazione di alzabandiera scout: pali, legature e montaggio in 3D.">
+<meta name="theme-color" content="#2f5d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icone/icona-192.png">
+<link rel="stylesheet" href="css/studio.css">
+</head>
+<body>
+<header id="barra">
+  <div class="marchio"><img src="icone/icona-192.png" alt=""><span>Sognabandiera <b>Studio</b></span></div>
+  <div class="gruppo-menu">
+    <button class="menu" data-menu="file">File ▾</button>
+    <div class="tendina" id="menu-file">
+      <button data-az="nuovo">Nuovo progetto<kbd>Ctrl+N</kbd></button>
+      <button data-az="apri">Apri file .json…<kbd>Ctrl+O</kbd></button>
+      <button data-az="salva">Salva<kbd>Ctrl+S</kbd></button>
+      <button data-az="salvaCome">Salva con nome…</button>
+      <hr>
+      <button data-az="apriApp">Apri dall'app…</button>
+      <button data-az="pubblica">Pubblica nell'app…</button>
+      <hr>
+      <button data-az="catalogo">Catalogo…</button>
+      <button data-az="accedi" id="voce-accedi">Accedi come amministratore…</button>
+    </div>
+  </div>
+  <div class="strumenti">
+    <button data-az="nuovoPalo" title="Aggiungi un palo dal catalogo (P)"><span class="ic">┃</span>Palo</button>
+    <button data-az="lega" title="Lega i due pali selezionati (L)"><span class="ic">✕</span>Lega</button>
+    <button data-az="tirante" title="Tirante con picchetto dal palo selezionato (T)"><span class="ic">⟋</span>Tirante</button>
+    <button data-az="asse" title="Aggiungi un'asse (A)"><span class="ic">▭</span>Asse</button>
+    <span class="sep"></span>
+    <button data-az="modoSposta" id="b-sposta" title="Sposta con le frecce nel 3D (G)"><span class="ic">✥</span>Sposta</button>
+    <button data-az="modoRuota" id="b-ruota" title="Ruota con gli anelli nel 3D (R)"><span class="ic">⟳</span>Ruota</button>
+    <button data-az="aggancia" id="b-aggancia" title="Clicca un punto: la base del palo selezionato va lì (K)"><span class="ic">⌖</span>Aggancia</button>
+    <span class="sep"></span>
+    <button data-az="duplica" title="Duplica (Ctrl+D)"><span class="ic">⧉</span>Duplica</button>
+    <button data-az="elimina" title="Elimina (Canc)"><span class="ic">🗑</span>Elimina</button>
+    <span class="sep"></span>
+    <button data-az="annulla" title="Annulla (Ctrl+Z)"><span class="ic">↶</span></button>
+    <button data-az="ripeti" title="Ripeti (Ctrl+Y)"><span class="ic">↷</span></button>
+  </div>
+  <div class="stato" id="stato"></div>
+</header>
+
+<main>
+  <aside id="sinistra">
+    <div class="titolo-pannello">Pezzi <span id="conta-pezzi"></span></div>
+    <input id="cerca" type="search" placeholder="Cerca…">
+    <div id="elenco"></div>
+  </aside>
+
+  <section id="centro">
+    <div id="vista"></div>
+    <div id="viste-rapide">
+      <button data-vista="3d">3D</button><button data-vista="alto">Alto</button><button data-vista="fronte">Fronte</button><button data-vista="lato">Lato</button><button data-vista="centra" title="Inquadra tutto (F)">⤢</button>
+    </div>
+    <div id="suggerimento"></div>
+    <div id="anteprima-passo" hidden>
+      <span id="ap-testo"></span>
+      <input type="range" id="ap-cursore" min="1" value="1">
+      <button id="ap-chiudi">Chiudi anteprima</button>
+    </div>
+  </section>
+
+  <aside id="destra">
+    <nav class="schede">
+      <button data-scheda="proprieta" class="on">Proprietà</button>
+      <button data-scheda="distinta">Distinta</button>
+      <button data-scheda="passi">Passi</button>
+      <button data-scheda="progetto">Progetto</button>
+    </nav>
+    <div class="scheda on" id="scheda-proprieta"></div>
+    <div class="scheda" id="scheda-distinta"></div>
+    <div class="scheda" id="scheda-passi"></div>
+    <div class="scheda" id="scheda-progetto"></div>
+  </aside>
+</main>
+
+<dialog id="dialogo"><form method="dialog" id="dialogo-form"></form></dialog>
+<div id="avviso" role="status"></div>
+<input type="file" id="file-apri" accept=".json,application/json" hidden>
+
+<script src="js/lib/three.min.js"></script>
+<script src="js/lib/OrbitControls.js"></script>
+<script src="js/lib/TransformControls.js"></script>
+<script src="js/calcoli.js"></script>
+<script src="js/geometria.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/modello.js"></script>
+<script src="js/scena.js"></script>
+<script src="js/cloud.js"></script>
+<script src="js/interfaccia.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
